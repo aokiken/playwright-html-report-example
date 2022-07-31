@@ -35,9 +35,11 @@ jobs:
         run: npx playwright install --with-deps
       - run: yarn run test
       - name: Upload artifact
+        if: success() || failure()
         uses: actions/upload-pages-artifact@v1
         with:
           path: ./playwright-report
       - name: Deploy to GitHub Pages
+        if: success() || failure()
         id: deployment
         uses: actions/deploy-pages@v1
