@@ -31,6 +31,8 @@ jobs:
         id: pages
         uses: actions/configure-pages@v1
       - run: yarn
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
       - run: yarn run test
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
